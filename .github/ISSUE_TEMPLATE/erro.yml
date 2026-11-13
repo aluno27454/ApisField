@@ -1,0 +1,29 @@
+name: Erro
+description: Algo não funciona como devia
+labels: ["erro"]
+body:
+  - type: textarea
+    id: passos
+    attributes:
+      label: Passos para reproduzir
+      placeholder: |
+        1. Abrir ...
+        2. Carregar em ...
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Resultado esperado vs. obtido
+    validations:
+      required: true
+  - type: input
+    id: dispositivo
+    attributes:
+      label: Dispositivo e versão do Android
+      placeholder: Pixel 10 Pro, Android 17
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs ou capturas de ecrã
+      render: shell

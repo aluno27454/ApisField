@@ -1,0 +1,30 @@
+name: Funcionalidade
+description: Nova funcionalidade ou tarefa de desenvolvimento
+labels: ["funcionalidade"]
+body:
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto
+      description: Porque é que isto é preciso e para quem.
+    validations:
+      required: true
+  - type: textarea
+    id: criterios
+    attributes:
+      label: Critérios de aceitação
+      description: Lista verificável do que tem de funcionar para a issue ficar fechada.
+      placeholder: |
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: notas
+    attributes:
+      label: Notas técnicas
+      description: Ficheiros, classes, endpoints, sensores ou bibliotecas envolvidos.
+  - type: input
+    id: data
+    attributes:
+      label: Data alvo
+      placeholder: dd/mm/aaaa

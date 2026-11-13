@@ -1,0 +1,21 @@
+# ===== Sistema e IDE =====
+.DS_Store
+.idea/
+*.iml
+.vscode/
+
+# ===== Gradle / Android =====
+.gradle/
+.kotlin/
+build/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+
+# ===== Artefactos e chaves de assinatura (nunca no repositório) =====
+*.apk
+*.aab
+*.jks
+*.keystore
+keystore.properties
