@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Separadores da barra inferior. Os ids têm de ser iguais aos dos destinos em nav_graph.xml. -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/painel"
+        android:icon="@drawable/ic_painel"
+        android:title="@string/separador_painel" />
+    <item
+        android:id="@+id/visitas"
+        android:icon="@drawable/ic_visitas"
+        android:title="@string/separador_visitas" />
+    <item
+        android:id="@+id/vespas"
+        android:icon="@drawable/ic_vespas"
+        android:title="@string/separador_vespas" />
+    <item
+        android:id="@+id/alertas"
+        android:icon="@drawable/ic_alertas"
+        android:title="@string/separador_alertas" />
+</menu>

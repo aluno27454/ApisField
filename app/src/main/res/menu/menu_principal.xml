@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Menu da toolbar do ecrã principal (no menu de excesso, os "três pontos"). -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/acaoSobre"
+        android:title="@string/menu_sobre"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/acaoTerminarSessao"
+        android:title="@string/menu_terminar_sessao"
+        app:showAsAction="never" />
+</menu>
