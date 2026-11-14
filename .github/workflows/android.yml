@@ -1,0 +1,43 @@
+# Integração contínua: em cada pull request e em cada push para a main,
+# compila a app, corre a análise estática (lint) e os testes unitários.
+name: Android CI
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+# Se chegar um push novo ao mesmo PR, cancela a execução anterior.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Lint, testes e build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Obter o código
+        uses: actions/checkout@v4
+
+      - name: Instalar o JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 25
+
+      - name: Configurar o Gradle (com cache)
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Lint, testes unitários e APK de debug
+        run: ./gradlew lint test assembleDebug
+
+      - name: Guardar o relatório de lint
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatorio-lint
+          path: app/build/reports/lint-results-*.html
+          if-no-files-found: ignore
