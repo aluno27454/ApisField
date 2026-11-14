@@ -14,7 +14,7 @@ Trabalho prático de **Desenvolvimento de Aplicações Móveis**, Licenciatura e
 | Nome | N.º | GitHub |
 |---|---|---|
 | André Vassalo | 27454 | [@aluno27454](https://github.com/aluno27454) |
-| Samuel Ponte | — | [@SamuelPonte](https://github.com/SamuelPonte) |
+| Samuel Ponte | 27227 | [@SamuelPonte](https://github.com/SamuelPonte) |
 
 ## Requisitos
 
