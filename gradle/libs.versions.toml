@@ -3,7 +3,8 @@
 # Cada biblioteca está justificada em docs/ARQUITETURA.md e no ecrã Sobre.
 
 [versions]
-agp = "9.5.1"
+# O AGP fica igual ao do template das aulas: o Android Studio só suporta versões até à sua.
+agp = "9.5.0"
 coreKtx = "1.19.1"
 appcompat = "1.8.0"
 material = "1.14.0"
