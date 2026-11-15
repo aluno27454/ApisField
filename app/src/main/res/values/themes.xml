@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--
+        Tema da app, baseado no Material 3 claro.
+        A app só tem modo claro (decisão de design), por isso não existe values-night.
+    -->
+    <style name="Base.Theme.ApisField" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/mel</item>
+        <item name="colorOnPrimary">@color/escuro</item>
+        <item name="colorPrimaryContainer">@color/mel_claro</item>
+        <item name="colorOnPrimaryContainer">@color/escuro</item>
+        <item name="colorSecondary">@color/floresta</item>
+        <item name="colorOnSecondary">@color/branco</item>
+        <item name="colorError">@color/estado_perigo</item>
+        <item name="android:colorBackground">@color/claro</item>
+        <item name="colorSurface">@color/branco</item>
+        <item name="colorOnSurface">@color/escuro</item>
+        <item name="colorOnSurfaceVariant">@color/medio</item>
+        <item name="colorOutline">@color/borda</item>
+
+        <!-- A barra de estado fica por cima da toolbar escura: ícones claros.
+             A barra de navegação fica por cima da barra inferior branca: ícones escuros. -->
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+
+    <style name="Theme.ApisField" parent="Base.Theme.ApisField" />
+
+    <!-- Toolbar escura com texto claro, como o cabeçalho da Hive Box. -->
+    <style name="ThemeOverlay.ApisField.Toolbar" parent="ThemeOverlay.Material3.Dark.ActionBar">
+        <item name="colorOnSurface">@color/claro</item>
+    </style>
+</resources>

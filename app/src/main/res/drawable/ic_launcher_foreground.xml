@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Frente do ícone adaptativo: hexágono escuro com uma abelha.
+    Tudo dentro da zona segura central (círculo de 66dp), porque cada fabricante recorta o ícone
+    com uma forma diferente.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Hexágono (favo) -->
+    <path
+        android:fillColor="@color/escuro"
+        android:pathData="M54,25L79.11,39.5L79.11,68.5L54,83L28.89,68.5L28.89,39.5Z" />
+    <!-- Asas -->
+    <path
+        android:fillAlpha="0.85"
+        android:fillColor="@color/claro"
+        android:pathData="M41,45a6,6 0,1 0,12 0a6,6 0,1 0,-12 0z M55,45a6,6 0,1 0,12 0a6,6 0,1 0,-12 0z" />
+    <!-- Corpo -->
+    <path
+        android:fillColor="@color/mel"
+        android:pathData="M45,57a9,13 0,1 0,18 0a9,13 0,1 0,-18 0z" />
+    <!-- Riscas -->
+    <path
+        android:fillColor="@color/escuro"
+        android:pathData="M45.5,54h17v3h-17z M46.5,61h15v3h-15z" />
+</vector>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cor dos ícones e textos da barra inferior: mel no separador ativo, cinza nos restantes. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="@color/mel_escuro" android:state_checked="true" />
+    <item android:color="@color/medio" />
+</selector>

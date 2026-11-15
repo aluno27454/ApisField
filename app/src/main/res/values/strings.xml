@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">ApisField</string>
+
+    <!-- Separadores da barra inferior -->
+    <string name="separador_painel">Painel</string>
+    <string name="separador_visitas">Visitas</string>
+    <string name="separador_vespas">Vespas</string>
+    <string name="separador_alertas">Alertas</string>
+
+    <!-- Menu da barra superior -->
+    <string name="menu_sobre">Sobre</string>
+    <string name="menu_terminar_sessao">Terminar sessão</string>
+
+    <!-- Ecrã temporário -->
+    <string name="em_construcao">Em construção</string>
+    <string name="em_construcao_descricao">Este separador vai ficar disponível numa próxima versão.</string>
+</resources>

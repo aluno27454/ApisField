@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Paleta completa do design system Hive Box, mantida na ApisField.
+    Algumas cores só são usadas pelos ecrãs das próximas funcionalidades;
+    o tools:ignore evita avisos de "recurso não usado" entretanto.
+-->
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources">
+    <!-- Mel: ações principais, acentos, separador ativo -->
+    <color name="mel">#F5A623</color>
+    <color name="mel_escuro">#D4891A</color>
+    <color name="mel_claro">#FDE8B5</color>
+
+    <!-- Neutros -->
+    <color name="escuro">#1A1A0E</color>       <!-- barras, títulos, texto principal -->
+    <color name="carvao">#2D2D1A</color>
+    <color name="medio">#6B6B4A</color>        <!-- texto secundário -->
+    <color name="claro">#F9F6EE</color>        <!-- fundo geral (branco quente) -->
+    <color name="branco">#FFFFFF</color>
+    <color name="borda">#E8DFC8</color>
+
+    <!-- Natureza -->
+    <color name="floresta">#2E5E2E</color>
+    <color name="floresta_claro">#E8F5E8</color>
+
+    <!-- Estados das colmeias -->
+    <color name="estado_saudavel">#27AE60</color>
+    <color name="estado_atencao">#F39C12</color>
+    <color name="estado_perigo">#C0392B</color>
+    <color name="estado_offline">#9B9B7A</color>
+
+    <!-- Fundos tonais dos estados -->
+    <color name="fundo_perigo">#FDECEA</color>
+    <color name="fundo_atencao">#FFF6E5</color>
+    <color name="fundo_offline">#EEF0F2</color>
+    <color name="fundo_nao_lido">#FFFDF5</color>
+</resources>
