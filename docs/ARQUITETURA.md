@@ -46,7 +46,7 @@ Pacote base: `pt.uptomar.dam2026.apisfield`
 | `NaoAutenticado` (401) | Termina a sessão e volta ao login |
 | `SemPermissao` (403) | Mostra uma mensagem de erro |
 | `NaoEncontrado` (404) | Mostra uma mensagem de erro |
-| `Validacao` (422) | Mostra os erros por campo |
+| `Validacao` (400) | Mostra os erros por campo (vêm em `errors`, no formato `ValidationProblemDetails`) |
 | `Servidor` (5xx) | Mostra uma mensagem de erro |
 
 Nenhuma exceção chega à UI sem tratamento.
