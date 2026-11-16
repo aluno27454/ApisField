@@ -1,14 +1,19 @@
 package pt.uptomar.dam2026.apisfield.ui.sobre
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import pt.uptomar.dam2026.apisfield.BuildConfig
 import pt.uptomar.dam2026.apisfield.R
 import pt.uptomar.dam2026.apisfield.databinding.ActivitySobreBinding
+import pt.uptomar.dam2026.apisfield.databinding.ItemBibliotecaBinding
 
 /**
  * Ecrã **Sobre**, obrigatório pelas regras da UC.
@@ -37,6 +42,44 @@ class SobreActivity : AppCompatActivity() {
 
         // A versão vem do versionName em app/build.gradle.kts, para nunca ficar desatualizada.
         binding.tvVersao.text = getString(R.string.sobre_versao, BuildConfig.VERSION_NAME)
+        mostrarBibliotecas()
+    }
+
+    /**
+     * Acrescenta à secção de bibliotecas uma linha por cada entrada das listas
+     * `sobre_bibliotecas_nomes` e `sobre_bibliotecas_origens` de `strings.xml`.
+     *
+     * Usa-se um [android.widget.LinearLayout] em vez de um `RecyclerView` porque a lista é curta
+     * e fixa: não há nada para reciclar.
+     */
+    private fun mostrarBibliotecas() {
+        val nomes = resources.getStringArray(R.array.sobre_bibliotecas_nomes)
+        val origens = resources.getStringArray(R.array.sobre_bibliotecas_origens)
+        // As duas listas têm de andar a par; se alguém acrescentar só a uma, falha logo ao abrir o ecrã.
+        check(nomes.size == origens.size) {
+            "Listas de bibliotecas com tamanhos diferentes: ${nomes.size} nomes e ${origens.size} origens"
+        }
+
+        nomes.zip(origens).forEach { (nome, origem) ->
+            val linha = ItemBibliotecaBinding.inflate(layoutInflater, binding.listaBibliotecas, true)
+            linha.tvNome.text = nome
+            linha.tvOrigem.text = origem
+            linha.root.setOnClickListener { abrirNoBrowser(origem) }
+        }
+    }
+
+    /**
+     * Abre [endereco] na app de browser do dispositivo.
+     *
+     * Se não houver nenhuma app capaz de abrir ligações, o Android lança
+     * [ActivityNotFoundException]; nesse caso mostra-se uma mensagem em vez de a app fechar.
+     */
+    private fun abrirNoBrowser(endereco: String) {
+        try {
+            startActivity(Intent(Intent.ACTION_VIEW, endereco.toUri()))
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, R.string.sobre_erro_sem_browser, Toast.LENGTH_LONG).show()
+        }
     }
 
     /**

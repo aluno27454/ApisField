@@ -144,6 +144,26 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <!-- Bibliotecas e código de terceiros: as linhas são acrescentadas no código
+                 a partir das listas em strings.xml. -->
+            <TextView
+                style="@style/Widget.ApisField.Sobre.TituloSeccao"
+                android:text="@string/sobre_seccao_bibliotecas" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="@string/sobre_bibliotecas_ajuda"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/medio" />
+
+            <LinearLayout
+                android:id="@+id/listaBibliotecas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
         </LinearLayout>
     </ScrollView>
 
