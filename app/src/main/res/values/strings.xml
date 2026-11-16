@@ -11,6 +11,9 @@
     <string name="menu_sobre">Sobre</string>
     <string name="menu_terminar_sessao">Terminar sessão</string>
 
+    <!-- Ecrã Sobre -->
+    <string name="sobre_titulo">Sobre</string>
+
     <!-- Ecrã temporário -->
     <string name="em_construcao">Em construção</string>
     <string name="em_construcao_descricao">Este separador vai ficar disponível numa próxima versão.</string>
