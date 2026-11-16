@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import pt.uptomar.dam2026.apisfield.BuildConfig
+import pt.uptomar.dam2026.apisfield.R
 import pt.uptomar.dam2026.apisfield.databinding.ActivitySobreBinding
 
 /**
@@ -32,6 +34,9 @@ class SobreActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        // A versão vem do versionName em app/build.gradle.kts, para nunca ficar desatualizada.
+        binding.tvVersao.text = getString(R.string.sobre_versao, BuildConfig.VERSION_NAME)
     }
 
     /**

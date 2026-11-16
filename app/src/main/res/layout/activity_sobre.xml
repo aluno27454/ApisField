@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/claro"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -29,7 +28,123 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp" />
+            android:padding="24dp">
+
+            <!-- Cabeçalho: nome e versão da app. O hexágono é só decorativo. -->
+            <ImageView
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_gravity="center_horizontal"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_hexagono" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                android:textColor="@color/escuro"
+                android:textStyle="bold" />
+
+            <!-- Preenchido no código com a versão definida em app/build.gradle.kts. -->
+            <TextView
+                android:id="@+id/tvVersao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/medio" />
+
+            <!-- Identificação do trabalho -->
+            <TextView
+                style="@style/Widget.ApisField.Sobre.TituloSeccao"
+                android:text="@string/sobre_seccao_trabalho" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sobre_curso"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="@color/escuro" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sobre_unidade_curricular"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="@color/escuro" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sobre_ano_letivo"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/medio" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sobre_instituicao"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/medio" />
+
+            <!-- Autores: um ao lado do outro, cada um com fotografia, nome e número. -->
+            <TextView
+                style="@style/Widget.ApisField.Sobre.TituloSeccao"
+                android:text="@string/sobre_seccao_autores" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        style="@style/Widget.ApisField.Sobre.FotoAutor"
+                        android:contentDescription="@string/autor_andre_foto"
+                        android:src="@drawable/foto_andre" />
+
+                    <TextView
+                        style="@style/Widget.ApisField.Sobre.NomeAutor"
+                        android:text="@string/autor_andre_nome" />
+
+                    <TextView
+                        style="@style/Widget.ApisField.Sobre.NumeroAutor"
+                        android:text="@string/autor_andre_numero" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        style="@style/Widget.ApisField.Sobre.FotoAutor"
+                        android:contentDescription="@string/autor_samuel_foto"
+                        android:src="@drawable/foto_samuel" />
+
+                    <TextView
+                        style="@style/Widget.ApisField.Sobre.NomeAutor"
+                        android:text="@string/autor_samuel_nome" />
+
+                    <TextView
+                        style="@style/Widget.ApisField.Sobre.NumeroAutor"
+                        android:text="@string/autor_samuel_numero" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>
