@@ -20,6 +20,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
 import pt.uptomar.dam2026.apisfield.databinding.ActivityMainBinding
 import pt.uptomar.dam2026.apisfield.ui.auth.LoginActivity
+import pt.uptomar.dam2026.apisfield.ui.sobre.SobreActivity
 
 /**
  * Ecrã principal da app, mostrado depois do login.
@@ -115,12 +116,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
+        R.id.acaoSobre -> {
+            startActivity(Intent(this, SobreActivity::class.java))
+            true
+        }
         R.id.acaoTerminarSessao -> {
             confirmarTerminarSessao()
             true
         }
-        // A ação Sobre é implementada na issue #2.
-        R.id.acaoSobre -> true
         else -> super.onOptionsItemSelected(item)
     }
 }

@@ -29,4 +29,50 @@
     <style name="ThemeOverlay.ApisField.Toolbar" parent="ThemeOverlay.Material3.Dark.ActionBar">
         <item name="colorOnSurface">@color/claro</item>
     </style>
+
+    <!-- Forma circular para imagens (cantos a 50% do lado). -->
+    <style name="ShapeAppearance.ApisField.Circulo" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Ecrã Sobre: estilos repetidos nas secções e nos dois autores. -->
+    <style name="Widget.ApisField.Sobre.TituloSeccao" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:accessibilityHeading">true</item>
+        <item name="android:textAppearance">?attr/textAppearanceTitleMedium</item>
+        <item name="android:textColor">@color/mel_escuro</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- O contorno é desenhado metade por dentro e metade por fora da imagem;
+         o padding de metade da largura do contorno evita que seja cortado. -->
+    <style name="Widget.ApisField.Sobre.FotoAutor" parent="">
+        <item name="android:layout_width">96dp</item>
+        <item name="android:layout_height">96dp</item>
+        <item name="android:padding">1dp</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.ApisField.Circulo</item>
+        <item name="strokeColor">@color/mel</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+
+    <style name="Widget.ApisField.Sobre.NomeAutor" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">?attr/textAppearanceTitleSmall</item>
+        <item name="android:textColor">@color/escuro</item>
+    </style>
+
+    <style name="Widget.ApisField.Sobre.NumeroAutor" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="android:textColor">@color/medio</item>
+    </style>
 </resources>

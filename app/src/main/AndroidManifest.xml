@@ -44,6 +44,12 @@
             android:name=".MainActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
+        <!-- Ecrã Sobre, aberto pelo menu da MainActivity. Não é exportado: só a própria app o abre. -->
+        <activity
+            android:name=".ui.sobre.SobreActivity"
+            android:exported="false"
+            android:label="@string/sobre_titulo" />
     </application>
 
 </manifest>
