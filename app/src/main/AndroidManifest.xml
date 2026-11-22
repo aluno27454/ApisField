@@ -32,6 +32,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Ecrã Sobre, aberto pelo menu da MainActivity. Não é exportado: só a própria app o abre. -->
+        <activity
+            android:name=".ui.sobre.SobreActivity"
+            android:exported="false"
+            android:label="@string/sobre_titulo" />
     </application>
 
 </manifest>

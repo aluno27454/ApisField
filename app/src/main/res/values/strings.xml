@@ -11,6 +11,45 @@
     <string name="menu_sobre">Sobre</string>
     <string name="menu_terminar_sessao">Terminar sessão</string>
 
+    <!-- Ecrã Sobre -->
+    <string name="sobre_titulo">Sobre</string>
+    <string name="sobre_versao">Versão %1$s</string>
+    <string name="sobre_seccao_trabalho">Trabalho prático</string>
+    <string name="sobre_curso">Licenciatura em Engenharia Informática</string>
+    <string name="sobre_unidade_curricular">Desenvolvimento de Aplicações Móveis</string>
+    <string name="sobre_ano_letivo">Ano letivo 2026/27</string>
+    <string name="sobre_instituicao">Universidade Politécnica de Tomar</string>
+    <string name="sobre_seccao_autores">Autores</string>
+
+    <!-- Autores: nomes próprios e números de aluno não se traduzem. -->
+    <string name="autor_andre_nome" translatable="false">André Vassalo</string>
+    <string name="autor_andre_numero">N.º 27454</string>
+    <string name="autor_andre_foto">Fotografia de André Vassalo</string>
+    <string name="autor_samuel_nome" translatable="false">Samuel Ponte</string>
+    <string name="autor_samuel_numero">N.º 27227</string>
+    <string name="autor_samuel_foto">Fotografia de Samuel Ponte</string>
+
+    <!--
+        Bibliotecas e código de terceiros usados na app, com a origem (regra da UC).
+        As duas listas andam a par: o nome na posição i corresponde à origem na posição i.
+        Sempre que entrar uma biblioteca nova, acrescentá-la aqui e em docs/ARQUITETURA.md.
+    -->
+    <string name="sobre_seccao_bibliotecas">Bibliotecas e código de terceiros</string>
+    <string name="sobre_bibliotecas_ajuda">Toca numa linha para abrir a página de origem.</string>
+    <string name="sobre_erro_sem_browser">Não há nenhuma app para abrir ligações.</string>
+    <string-array name="sobre_bibliotecas_nomes" translatable="false">
+        <item>AndroidX Core, AppCompat, Activity e ConstraintLayout</item>
+        <item>Material Components for Android</item>
+        <item>AndroidX Navigation</item>
+        <item>Material Icons</item>
+    </string-array>
+    <string-array name="sobre_bibliotecas_origens" translatable="false">
+        <item>https://developer.android.com/jetpack/androidx</item>
+        <item>https://github.com/material-components/material-components-android</item>
+        <item>https://developer.android.com/guide/navigation</item>
+        <item>https://fonts.google.com/icons</item>
+    </string-array>
+
     <!-- Erros da API (data/remote/ApiError.kt) -->
     <string name="erro_sem_ligacao">Sem ligação. Verifica a Internet e tenta outra vez.</string>
     <string name="erro_nao_autenticado">A sessão terminou. Inicia sessão outra vez.</string>

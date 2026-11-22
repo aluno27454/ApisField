@@ -7,7 +7,7 @@ Aplicação Android nativa, em Kotlin, para apicultores. Junta a monitorização
 - **Vespa asiática:** registo de avistamentos com foto e localização, e triangulação de ninhos com a bússola.
 - **Modo mãos-livres:** comandos de voz, leitura por voz e gesto no sensor de proximidade, para usar com luvas.
 
-Trabalho prático de **Desenvolvimento de Aplicações Móveis**, Licenciatura em Engenharia Informática, Instituto Politécnico de Tomar, ano letivo 2026/27.
+Trabalho prático de **Desenvolvimento de Aplicações Móveis**, Licenciatura em Engenharia Informática, Universidade Politécnica de Tomar, ano letivo 2026/27.
 
 ## Autores
 
