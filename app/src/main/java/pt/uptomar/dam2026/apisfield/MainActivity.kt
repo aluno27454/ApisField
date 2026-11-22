@@ -1,5 +1,6 @@
 package pt.uptomar.dam2026.apisfield
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,6 +14,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import pt.uptomar.dam2026.apisfield.databinding.ActivityMainBinding
+import pt.uptomar.dam2026.apisfield.ui.sobre.SobreActivity
 
 /**
  * Ecrã principal da app, mostrado depois do login.
@@ -72,8 +74,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
-        // As ações do menu são implementadas nas issues #2 (Sobre) e #5 (Terminar sessão).
-        R.id.acaoSobre, R.id.acaoTerminarSessao -> true
+        R.id.acaoSobre -> {
+            startActivity(Intent(this, SobreActivity::class.java))
+            true
+        }
+        // A ação de terminar sessão é implementada na issue #5.
+        R.id.acaoTerminarSessao -> true
         else -> super.onOptionsItemSelected(item)
     }
 }
