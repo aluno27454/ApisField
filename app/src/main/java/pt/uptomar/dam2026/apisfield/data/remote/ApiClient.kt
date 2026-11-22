@@ -17,6 +17,7 @@ private const val TIMEOUT_SEGUNDOS = 15L
  *
  * @param baseUrl endereço da API, terminado em `/` (vem de `BuildConfig.API_BASE_URL`).
  * @param tokenProvider devolve o token da sessão atual, ou null se não houver sessão.
+ * @param aoSessaoExpirar chamada quando a API responde 401 a um pedido com token.
  * @param registarPedidos se true, escreve no Logcat cada pedido e resposta. Só deve ser true
  * em debug: em release o Logcat ficaria com o token e os dados do utilizador.
  */
@@ -24,12 +25,13 @@ fun createApiService(
     baseUrl: String,
     tokenProvider: () -> String?,
     registarPedidos: Boolean,
+    aoSessaoExpirar: () -> Unit = {},
 ): ApiService {
     val cliente = OkHttpClient.Builder()
         .connectTimeout(TIMEOUT_SEGUNDOS, TimeUnit.SECONDS)
         .readTimeout(TIMEOUT_SEGUNDOS, TimeUnit.SECONDS)
         .writeTimeout(TIMEOUT_SEGUNDOS, TimeUnit.SECONDS)
-        .addInterceptor(AuthInterceptor(tokenProvider))
+        .addInterceptor(AuthInterceptor(tokenProvider, aoSessaoExpirar))
         .apply {
             if (registarPedidos) {
                 addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
