@@ -72,6 +72,7 @@
         <item>Retrofit e Gson converter</item>
         <item>OkHttp e logging-interceptor</item>
         <item>Kotlin Coroutines</item>
+        <item>AndroidX Lifecycle (ViewModel)</item>
     </string-array>
     <string-array name="sobre_bibliotecas_origens" translatable="false">
         <item>https://developer.android.com/jetpack/androidx</item>
@@ -81,6 +82,7 @@
         <item>https://square.github.io/retrofit/</item>
         <item>https://square.github.io/okhttp/</item>
         <item>https://github.com/Kotlin/kotlinx.coroutines</item>
+        <item>https://developer.android.com/jetpack/androidx/releases/lifecycle</item>
     </string-array>
 
     <!-- Erros da API (data/remote/ApiError.kt) -->
