@@ -1,6 +1,9 @@
 package pt.uptomar.dam2026.apisfield.di
 
 import android.content.Context
+import pt.uptomar.dam2026.apisfield.BuildConfig
+import pt.uptomar.dam2026.apisfield.data.remote.ApiService
+import pt.uptomar.dam2026.apisfield.data.remote.createApiService
 
 /**
  * Contentor de dependências da app (injeção de dependências manual).
@@ -11,9 +14,23 @@ import android.content.Context
  *
  * Referência: https://developer.android.com/training/dependency-injection/manual
  *
- * Por agora está vazio; as próximas funcionalidades acrescentam aqui o cliente da API,
- * a base de dados local e a sessão do utilizador.
+ * As próximas funcionalidades acrescentam aqui a base de dados local e a sessão do utilizador.
  *
  * @param appContext contexto da aplicação (nunca o de uma Activity, para não a manter em memória).
  */
-class AppContainer(private val appContext: Context)
+class AppContainer(private val appContext: Context) {
+
+    /**
+     * Cliente da API. O endereço depende do tipo de build (ver app/build.gradle.kts) e os
+     * pedidos só são escritos no Logcat em debug.
+     *
+     * O token ainda é sempre null: a sessão (SessionStore) é criada na issue #5.
+     */
+    val api: ApiService by lazy {
+        createApiService(
+            baseUrl = BuildConfig.API_BASE_URL,
+            tokenProvider = { null },
+            registarPedidos = BuildConfig.DEBUG,
+        )
+    }
+}

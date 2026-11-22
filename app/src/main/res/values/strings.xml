@@ -42,13 +42,29 @@
         <item>Material Components for Android</item>
         <item>AndroidX Navigation</item>
         <item>Material Icons</item>
+        <item>Retrofit e Gson converter</item>
+        <item>OkHttp e logging-interceptor</item>
+        <item>Kotlin Coroutines</item>
     </string-array>
     <string-array name="sobre_bibliotecas_origens" translatable="false">
         <item>https://developer.android.com/jetpack/androidx</item>
         <item>https://github.com/material-components/material-components-android</item>
         <item>https://developer.android.com/guide/navigation</item>
         <item>https://fonts.google.com/icons</item>
+        <item>https://square.github.io/retrofit/</item>
+        <item>https://square.github.io/okhttp/</item>
+        <item>https://github.com/Kotlin/kotlinx.coroutines</item>
     </string-array>
+
+    <!-- Erros da API (data/remote/ApiError.kt) -->
+    <string name="erro_sem_ligacao">Sem ligação. Verifica a Internet e tenta outra vez.</string>
+    <string name="erro_nao_autenticado">A sessão terminou. Inicia sessão outra vez.</string>
+    <string name="erro_sem_permissao">Não tens permissão para fazer isto.</string>
+    <string name="erro_nao_encontrado">Não foi encontrado. Pode ter sido apagado.</string>
+    <string name="erro_conflito">Já existe um registo com estes dados.</string>
+    <string name="erro_validacao">Revê os campos assinalados.</string>
+    <string name="erro_servidor">O servidor teve um problema. Tenta mais tarde.</string>
+    <string name="erro_resposta_invalida">O servidor enviou uma resposta inesperada.</string>
 
     <!-- Ecrã temporário -->
     <string name="em_construcao">Em construção</string>

@@ -38,7 +38,7 @@ Pacote base: `pt.uptomar.dam2026.apisfield`
 
 **Estado do ecrã.** Cada ViewModel expõe um `StateFlow<UiState<T>>`, onde `UiState` é uma sealed class com `Loading`, `Success(data)`, `Empty` e `Error(@StringRes message)`. O Fragment recolhe o fluxo com `repeatOnLifecycle(STARTED)` e mostra a vista certa para cada estado.
 
-**Erros.** Os repositórios convertem exceções em `ApiError`:
+**Erros.** As chamadas à API passam por `safeApiCall` (`data/remote/SafeApiCall.kt`), que converte as exceções e os códigos HTTP num `ApiError`; cada erro tem a sua mensagem em `strings.xml`:
 
 | Erro | Comportamento |
 |---|---|
@@ -48,6 +48,8 @@ Pacote base: `pt.uptomar.dam2026.apisfield`
 | `NaoEncontrado` (404) | Mostra uma mensagem de erro |
 | `Validacao` (400) | Mostra os erros por campo (vêm em `errors`, no formato `ValidationProblemDetails`) |
 | `Servidor` (5xx) | Mostra uma mensagem de erro |
+| `Conflito` (409) | Mostra a mensagem junto do campo (ex.: email já registado) |
+| `RespostaInvalida` | A API respondeu, mas com dados que a app não reconhece: mostra uma mensagem de erro |
 
 Nenhuma exceção chega à UI sem tratamento.
 
