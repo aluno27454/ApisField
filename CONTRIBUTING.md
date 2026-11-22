@@ -12,7 +12,17 @@ Este documento define como trabalhamos no repositório. O objetivo é que qualqu
 3. **Commits pequenos**, cada um com uma única intenção (ver abaixo).
 4. **Pull request** para `main`, preenchendo o template. Na descrição, escrever `Closes #<n.º>` para fechar a issue automaticamente.
 5. **Revisão:** o outro membro do grupo revê o PR. O CI tem de passar.
-6. **Squash merge.** Depois do merge, apagar a branch.
+6. **Merge commit.** O PR entra na `main` com um merge commit (o GitHub só permite este tipo de merge), para os commits de cada branch ficarem no histórico.
+7. **A branch não se apaga.** Fica no repositório como registo do trabalho de cada funcionalidade.
+
+Para trazer para uma branch as alterações que entretanto entraram na `main` (por exemplo, quando o GitHub indica que a branch está desatualizada), faz-se merge da `main` na branch, e não rebase:
+
+```
+git switch feat/12-formulario-visita
+git fetch origin
+git merge origin/main
+git push
+```
 
 Ninguém faz push direto para `main`.
 
