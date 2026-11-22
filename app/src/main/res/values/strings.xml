@@ -11,6 +11,16 @@
     <string name="menu_sobre">Sobre</string>
     <string name="menu_terminar_sessao">Terminar sessão</string>
 
+    <!-- Erros da API (data/remote/ApiError.kt) -->
+    <string name="erro_sem_ligacao">Sem ligação. Verifica a Internet e tenta outra vez.</string>
+    <string name="erro_nao_autenticado">A sessão terminou. Inicia sessão outra vez.</string>
+    <string name="erro_sem_permissao">Não tens permissão para fazer isto.</string>
+    <string name="erro_nao_encontrado">Não foi encontrado. Pode ter sido apagado.</string>
+    <string name="erro_conflito">Já existe um registo com estes dados.</string>
+    <string name="erro_validacao">Revê os campos assinalados.</string>
+    <string name="erro_servidor">O servidor teve um problema. Tenta mais tarde.</string>
+    <string name="erro_resposta_invalida">O servidor enviou uma resposta inesperada.</string>
+
     <!-- Ecrã temporário -->
     <string name="em_construcao">Em construção</string>
     <string name="em_construcao_descricao">Este separador vai ficar disponível numa próxima versão.</string>
