@@ -12,7 +12,6 @@
     <string name="menu_terminar_sessao">Terminar sessão</string>
 
     <!-- Login e registo -->
-    <string name="login_titulo">Iniciar sessão</string>
     <string name="login_subtitulo">Acompanha as tuas colmeias no campo.</string>
     <string name="campo_email">Email</string>
     <string name="campo_password">Palavra-passe</string>
