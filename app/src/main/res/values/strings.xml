@@ -42,12 +42,18 @@
         <item>Material Components for Android</item>
         <item>AndroidX Navigation</item>
         <item>Material Icons</item>
+        <item>Retrofit e Gson converter</item>
+        <item>OkHttp e logging-interceptor</item>
+        <item>Kotlin Coroutines</item>
     </string-array>
     <string-array name="sobre_bibliotecas_origens" translatable="false">
         <item>https://developer.android.com/jetpack/androidx</item>
         <item>https://github.com/material-components/material-components-android</item>
         <item>https://developer.android.com/guide/navigation</item>
         <item>https://fonts.google.com/icons</item>
+        <item>https://square.github.io/retrofit/</item>
+        <item>https://square.github.io/okhttp/</item>
+        <item>https://github.com/Kotlin/kotlinx.coroutines</item>
     </string-array>
 
     <!-- Erros da API (data/remote/ApiError.kt) -->
