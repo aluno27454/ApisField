@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Só na build de debug: permite HTTP sem TLS para a API a correr no computador de
+    desenvolvimento (10.0.2.2 é o endereço do computador visto a partir do emulador).
+    Todos os outros endereços continuam a exigir HTTPS.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">10.0.2.2</domain>
+    </domain-config>
+</network-security-config>
