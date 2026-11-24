@@ -36,6 +36,54 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <!-- Pílula pequena de texto (sensores, modelo e estado de uma colmeia). -->
+    <style name="Widget.ApisField.Chip" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/fundo_pilula</item>
+        <item name="android:backgroundTint">@color/claro</item>
+        <item name="android:paddingHorizontal">10dp</item>
+        <item name="android:paddingVertical">4dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceLabelMedium</item>
+        <item name="android:textColor">@color/escuro</item>
+    </style>
+
+    <!-- Painel: cartões com as contagens, todos com a mesma largura. -->
+    <style name="Widget.ApisField.Painel.Contagem" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_marginHorizontal">4dp</item>
+        <item name="android:background">@drawable/fundo_contagem</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingHorizontal">2dp</item>
+        <item name="android:paddingVertical">10dp</item>
+        <!-- O leitor de ecrã lê o número e o rótulo de uma vez ("3, Saudáveis"). -->
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="Widget.ApisField.Painel.ContagemNumero" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceTitleLarge</item>
+        <item name="android:textColor">@color/escuro</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- O texto encolhe se não couber: com letra grande, "Saudáveis" não cabia em cinco colunas. -->
+    <style name="Widget.ApisField.Painel.ContagemRotulo" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/medio</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">8sp</item>
+        <item name="android:autoSizeMaxTextSize">12sp</item>
+    </style>
+
     <!-- Ecrã Sobre: estilos repetidos nas secções e nos dois autores. -->
     <style name="Widget.ApisField.Sobre.TituloSeccao" parent="">
         <item name="android:layout_width">match_parent</item>

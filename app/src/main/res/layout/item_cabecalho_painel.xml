@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Topo do painel: data, saudação, estado geral, contagens e título da lista. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- As contagens ficam metade por cima do cabeçalho escuro (margem negativa). -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/fundo_cabecalho_painel"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="48dp">
+
+        <TextView
+            android:id="@+id/tvData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textAppearance="?attr/textAppearanceLabelMedium"
+            android:textColor="@color/mel"
+            tools:text="Terça-feira, 24 de novembro" />
+
+        <TextView
+            android:id="@+id/tvSaudacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:accessibilityHeading="true"
+            android:textAppearance="?attr/textAppearanceHeadlineSmall"
+            android:textColor="@color/claro"
+            android:textStyle="bold"
+            tools:text="Bom dia, André" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/pontoEstado"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/ponto" />
+
+            <TextView
+                android:id="@+id/tvEstado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textColor="@color/claro"
+                tools:text="Tudo tranquilo no apiário" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="-28dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/cartaoTotal"
+                style="@style/Widget.ApisField.Painel.Contagem">
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="4dp"
+                    android:background="@drawable/fundo_pilula"
+                    android:backgroundTint="@color/mel" />
+
+                <TextView
+                    android:id="@+id/tvTotal"
+                    style="@style/Widget.ApisField.Painel.ContagemNumero" />
+
+                <TextView
+                    style="@style/Widget.ApisField.Painel.ContagemRotulo"
+                    android:text="@string/painel_total" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cartaoSaudaveis"
+                style="@style/Widget.ApisField.Painel.Contagem">
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="4dp"
+                    android:background="@drawable/fundo_pilula"
+                    android:backgroundTint="@color/estado_saudavel" />
+
+                <TextView
+                    android:id="@+id/tvSaudaveis"
+                    style="@style/Widget.ApisField.Painel.ContagemNumero" />
+
+                <TextView
+                    style="@style/Widget.ApisField.Painel.ContagemRotulo"
+                    android:text="@string/painel_saudaveis" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cartaoAtencao"
+                style="@style/Widget.ApisField.Painel.Contagem">
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="4dp"
+                    android:background="@drawable/fundo_pilula"
+                    android:backgroundTint="@color/estado_atencao" />
+
+                <TextView
+                    android:id="@+id/tvAtencao"
+                    style="@style/Widget.ApisField.Painel.ContagemNumero" />
+
+                <TextView
+                    style="@style/Widget.ApisField.Painel.ContagemRotulo"
+                    android:text="@string/estado_atencao" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cartaoPerigo"
+                style="@style/Widget.ApisField.Painel.Contagem">
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="4dp"
+                    android:background="@drawable/fundo_pilula"
+                    android:backgroundTint="@color/estado_perigo" />
+
+                <TextView
+                    android:id="@+id/tvPerigo"
+                    style="@style/Widget.ApisField.Painel.ContagemNumero" />
+
+                <TextView
+                    style="@style/Widget.ApisField.Painel.ContagemRotulo"
+                    android:text="@string/estado_perigo" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cartaoOffline"
+                style="@style/Widget.ApisField.Painel.Contagem">
+
+                <View
+                    android:layout_width="24dp"
+                    android:layout_height="4dp"
+                    android:background="@drawable/fundo_pilula"
+                    android:backgroundTint="@color/estado_offline" />
+
+                <TextView
+                    android:id="@+id/tvOffline"
+                    style="@style/Widget.ApisField.Painel.ContagemNumero" />
+
+                <TextView
+                    style="@style/Widget.ApisField.Painel.ContagemRotulo"
+                    android:text="@string/estado_offline" />
+            </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="4dp"
+        android:accessibilityHeading="true"
+        android:text="@string/painel_as_tuas_colmeias"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:textColor="@color/escuro"
+        android:textStyle="bold" />
+
+</LinearLayout>
