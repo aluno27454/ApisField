@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Painel: cabeçalho e lista de colmeias (na mesma RecyclerView), ou o carregamento, o vazio ou o erro. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lista"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <!-- Aparece por cima da lista enquanto se atualiza. -->
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressoAtualizar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/a_carregar"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progresso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:contentDescription="@string/a_carregar"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <!-- Vazio e erro usam o mesmo bloco; o botão só aparece no erro. -->
+    <LinearLayout
+        android:id="@+id/grupoMensagem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_hexagono" />
+
+        <TextView
+            android:id="@+id/tvMensagemTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceTitleMedium"
+            android:textColor="@color/escuro"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvMensagemTexto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:textColor="@color/medio" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTentar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/tentar_outra_vez" />
+    </LinearLayout>
+
+</FrameLayout>
