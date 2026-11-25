@@ -70,14 +70,32 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /** Pede confirmação antes de terminar a sessão, para um toque acidental não obrigar a novo login. */
+    /**
+     * Pede confirmação antes de terminar a sessão, para um toque acidental não obrigar a novo login.
+     *
+     * Terminar a sessão apaga os dados guardados no telemóvel. Se houver visitas ou avistamentos
+     * que ainda não chegaram à API, a mensagem diz quantos são, porque esses perdem-se.
+     */
     private fun confirmarTerminarSessao() {
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.terminar_sessao_titulo)
-            .setMessage(R.string.terminar_sessao_mensagem)
-            .setNegativeButton(R.string.cancelar, null)
-            .setPositiveButton(R.string.terminar_sessao_confirmar) { _, _ -> container.authRepository.terminarSessao() }
-            .show()
+        lifecycleScope.launch {
+            val porEnviar = container.authRepository.registosPorEnviar()
+            val mensagem = buildString {
+                append(getString(R.string.terminar_sessao_mensagem))
+                if (porEnviar > 0) {
+                    append("\n\n")
+                    val aviso = R.plurals.terminar_sessao_aviso_por_enviar
+                    append(resources.getQuantityString(aviso, porEnviar, porEnviar))
+                }
+            }
+            MaterialAlertDialogBuilder(this@MainActivity)
+                .setTitle(R.string.terminar_sessao_titulo)
+                .setMessage(mensagem)
+                .setNegativeButton(R.string.cancelar, null)
+                .setPositiveButton(R.string.terminar_sessao_confirmar) { _, _ ->
+                    lifecycleScope.launch { container.authRepository.terminarSessao() }
+                }
+                .show()
+        }
     }
 
     /**
