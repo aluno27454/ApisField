@@ -187,6 +187,124 @@
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="@color/branco"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/borda"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:accessibilityHeading="true"
+                            android:text="@string/grafico_titulo"
+                            android:textAppearance="?attr/textAppearanceTitleMedium"
+                            android:textColor="@color/escuro"
+                            android:textStyle="bold" />
+
+                        <!-- A carregar, sem dados ou erro. -->
+                        <TextView
+                            android:id="@+id/tvHistorico"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:textAppearance="?attr/textAppearanceBodyMedium"
+                            android:textColor="@color/medio"
+                            tools:text="A carregar…" />
+
+                        <LinearLayout
+                            android:id="@+id/grupoGraficos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            tools:visibility="visible">
+
+                            <LinearLayout
+                                android:id="@+id/grupoTemperatura"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="4dp"
+                                    android:text="@string/sensor_temp_interior"
+                                    android:textAppearance="?attr/textAppearanceLabelLarge"
+                                    android:textColor="@color/escuro" />
+
+                                <pt.uptomar.dam2026.apisfield.ui.common.LineChartView
+                                    android:id="@+id/graficoTemperatura"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="160dp"
+                                    app:casasDecimais="1"
+                                    app:corLinha="@color/estado_perigo"
+                                    app:unidade="@string/unidade_celsius" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/grupoPeso"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="4dp"
+                                    android:text="@string/sensor_peso"
+                                    android:textAppearance="?attr/textAppearanceLabelLarge"
+                                    android:textColor="@color/escuro" />
+
+                                <pt.uptomar.dam2026.apisfield.ui.common.LineChartView
+                                    android:id="@+id/graficoPeso"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="160dp"
+                                    app:casasDecimais="1"
+                                    app:corLinha="@color/floresta"
+                                    app:unidade="@string/unidade_kg" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/grupoCo2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="4dp"
+                                    android:text="@string/sensor_co2"
+                                    android:textAppearance="?attr/textAppearanceLabelLarge"
+                                    android:textColor="@color/escuro" />
+
+                                <pt.uptomar.dam2026.apisfield.ui.common.LineChartView
+                                    android:id="@+id/graficoCo2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="160dp"
+                                    app:casasDecimais="0"
+                                    app:corLinha="@color/mel"
+                                    app:unidade="@string/unidade_ppm" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnRegistarVisita"
                     android:layout_width="match_parent"

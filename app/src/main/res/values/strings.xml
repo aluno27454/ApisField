@@ -97,6 +97,13 @@
     <string name="limite_max_temperatura">Acima do máximo de %1$d °C</string>
     <string name="limite_max_ppm">Acima do máximo de %1$d ppm</string>
     <string name="limite_min_percentagem">Abaixo do mínimo de %1$d%%</string>
+    <string name="grafico_titulo">Últimos 7 dias</string>
+    <string name="grafico_sem_dados">sem dados</string>
+    <string name="grafico_vazio">Ainda não há leituras destes dias.</string>
+    <string name="grafico_descricao">Gráfico dos últimos 7 dias: %1$s</string>
+    <string name="unidade_celsius" translatable="false">°C</string>
+    <string name="unidade_kg" translatable="false">kg</string>
+    <string name="unidade_ppm" translatable="false">ppm</string>
     <string name="detalhe_registar_visita">Registar visita</string>
     <string name="detalhe_ver_visitas">Ver visitas</string>
     <string name="detalhe_abrir_mapa">Abrir no mapa</string>

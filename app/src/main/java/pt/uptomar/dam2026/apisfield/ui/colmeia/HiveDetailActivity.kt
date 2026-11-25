@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -34,10 +35,13 @@ import pt.uptomar.dam2026.apisfield.databinding.ActivityHiveDetailBinding
 import pt.uptomar.dam2026.apisfield.databinding.ItemSensorBinding
 import pt.uptomar.dam2026.apisfield.domain.HiveThresholds
 import pt.uptomar.dam2026.apisfield.domain.model.Hive
+import pt.uptomar.dam2026.apisfield.domain.model.HiveHistory
 import pt.uptomar.dam2026.apisfield.domain.model.HiveModel
 import pt.uptomar.dam2026.apisfield.domain.model.HiveSensors
 import pt.uptomar.dam2026.apisfield.domain.model.HiveStatus
+import pt.uptomar.dam2026.apisfield.domain.model.SensorReading
 import pt.uptomar.dam2026.apisfield.ui.common.EcraUiState
+import pt.uptomar.dam2026.apisfield.ui.common.LineChartView
 import pt.uptomar.dam2026.apisfield.ui.common.UiState
 import pt.uptomar.dam2026.apisfield.ui.common.cor
 import pt.uptomar.dam2026.apisfield.ui.common.corFundo
@@ -84,6 +88,7 @@ class HiveDetailActivity : AppCompatActivity() {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch { vm.estado.collect(::mostrar) }
+                launch { vm.historico.collect(::mostrarHistorico) }
                 // Se a sessão expirar aqui (401), fecha: a MainActivity, por baixo, volta ao login.
                 launch {
                     appContainer.sessao.utilizador.first { it == null }
@@ -170,6 +175,29 @@ class HiveDetailActivity : AppCompatActivity() {
             getString(R.string.limite_min_percentagem, HiveThresholds.SINAL_MIN)
                 .takeIf { HiveThresholds.sinalFraco(s.signal) },
         )
+    }
+
+    /** Gráficos dos últimos 7 dias, ou a mensagem que os substitui. */
+    private fun mostrarHistorico(estado: UiState<HiveHistory>) {
+        binding.grupoGraficos.isVisible = estado is UiState.Success
+        binding.tvHistorico.isVisible = estado !is UiState.Success
+        when (estado) {
+            is UiState.Loading -> binding.tvHistorico.setText(R.string.a_carregar)
+            is UiState.Empty -> binding.tvHistorico.setText(R.string.grafico_vazio)
+            is UiState.Error -> binding.tvHistorico.setText(estado.message)
+            is UiState.Success -> {
+                mostrarGrafico(binding.grupoTemperatura, binding.graficoTemperatura, estado.data.temperature)
+                mostrarGrafico(binding.grupoPeso, binding.graficoPeso, estado.data.weight)
+                mostrarGrafico(binding.grupoCo2, binding.graficoCo2, estado.data.co2)
+            }
+        }
+    }
+
+    /** Sem nenhum valor, o gráfico não aparece. É o caso do CO₂ no modelo Starter, que não tem esse sensor. */
+    private fun mostrarGrafico(grupo: View, grafico: LineChartView, leituras: List<SensorReading>) {
+        grupo.isVisible = leituras.any { it.value != null }
+        grafico.mostrar(leituras)
+        grafico.contentDescription = getString(R.string.grafico_descricao, grafico.resumo())
     }
 
     /**
