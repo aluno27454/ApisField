@@ -38,6 +38,77 @@
     <string name="terminar_sessao_confirmar">Terminar</string>
     <string name="cancelar">Cancelar</string>
 
+    <!-- Painel -->
+    <string name="painel_atualizar">Atualizar</string>
+    <string name="painel_bom_dia">Bom dia, %1$s</string>
+    <string name="painel_boa_tarde">Boa tarde, %1$s</string>
+    <string name="painel_boa_noite">Boa noite, %1$s</string>
+    <string name="painel_tranquilo">Tudo tranquilo no apiário</string>
+    <plurals name="painel_em_atencao">
+        <item quantity="one">%1$d colmeia a precisar de atenção</item>
+        <item quantity="many">%1$d colmeias a precisar de atenção</item>
+        <item quantity="other">%1$d colmeias a precisar de atenção</item>
+    </plurals>
+    <plurals name="painel_em_perigo">
+        <item quantity="one">%1$d colmeia em perigo</item>
+        <item quantity="many">%1$d colmeias em perigo</item>
+        <item quantity="other">%1$d colmeias em perigo</item>
+    </plurals>
+    <string name="painel_total">Total</string>
+    <string name="painel_saudaveis">Saudáveis</string>
+    <string name="painel_as_tuas_colmeias">As tuas colmeias</string>
+    <string name="painel_vazio_titulo">Ainda não tens colmeias</string>
+    <string name="painel_vazio_texto">Quando tiveres uma Hive Box, as leituras aparecem aqui.</string>
+    <string name="painel_erro_titulo">Não deu para carregar as colmeias</string>
+
+    <!-- Carregamento e erro (todos os ecrãs) -->
+    <string name="a_carregar">A carregar…</string>
+    <string name="tentar_outra_vez">Tentar outra vez</string>
+
+    <!-- Colmeias -->
+    <string name="estado_saudavel">Saudável</string>
+    <string name="estado_atencao">Atenção</string>
+    <string name="estado_perigo">Perigo</string>
+    <string name="estado_offline">Offline</string>
+    <string name="modelo_pro" translatable="false">PRO</string>
+    <string name="modelo_starter" translatable="false">STARTER</string>
+    <string name="colmeia_temperatura">%1$.1f °C</string>
+    <string name="colmeia_peso">%1$.1f kg</string>
+    <string name="colmeia_co2">CO₂ %1$.0f ppm</string>
+    <string name="colmeia_bateria">Bateria %1$d%%</string>
+    <string name="colmeia_vespa">Vespa asiática</string>
+    <string name="colmeia_sem_comunicacao">Sem comunicação</string>
+
+    <!-- Detalhe da colmeia -->
+    <string name="detalhe_erro_titulo">Não deu para abrir a colmeia</string>
+    <string name="detalhe_atualizado">Atualizado às %1$s</string>
+    <string name="detalhe_aviso_offline">Sem comunicação. As leituras podem estar desatualizadas.</string>
+    <string name="detalhe_aviso_vespa">Vespa asiática detetada à entrada da colmeia.</string>
+    <string name="detalhe_sensores">Sensores</string>
+    <string name="sensor_temp_interior">Temperatura interior</string>
+    <string name="sensor_temp_exterior">Temperatura exterior</string>
+    <string name="sensor_humidade">Humidade</string>
+    <string name="sensor_peso">Peso</string>
+    <string name="sensor_co2">CO₂</string>
+    <string name="sensor_bateria">Bateria</string>
+    <string name="sensor_sinal">Sinal</string>
+    <string name="valor_percentagem">%1$d%%</string>
+    <string name="valor_ppm">%1$.0f ppm</string>
+    <string name="limite_max_temperatura">Acima do máximo de %1$d °C</string>
+    <string name="limite_max_ppm">Acima do máximo de %1$d ppm</string>
+    <string name="limite_min_percentagem">Abaixo do mínimo de %1$d%%</string>
+    <string name="grafico_titulo">Últimos 7 dias</string>
+    <string name="grafico_sem_dados">sem dados</string>
+    <string name="grafico_vazio">Ainda não há leituras destes dias.</string>
+    <string name="grafico_descricao">Gráfico dos últimos 7 dias: %1$s</string>
+    <string name="unidade_celsius" translatable="false">°C</string>
+    <string name="unidade_kg" translatable="false">kg</string>
+    <string name="unidade_ppm" translatable="false">ppm</string>
+    <string name="detalhe_registar_visita">Registar visita</string>
+    <string name="detalhe_ver_visitas">Ver visitas</string>
+    <string name="detalhe_abrir_mapa">Abrir no mapa</string>
+    <string name="detalhe_sem_mapa">Não há nenhuma app de mapas instalada.</string>
+
     <!-- Ecrã Sobre -->
     <string name="sobre_titulo">Sobre</string>
     <string name="sobre_versao">Versão %1$s</string>

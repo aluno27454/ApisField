@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Atributos XML das vistas próprias da app. -->
+<resources>
+    <declare-styleable name="LineChartView">
+        <!-- Cor da linha e dos pontos. -->
+        <attr name="corLinha" format="color" />
+        <!-- Unidade mostrada por cima do eixo (ex.: °C). -->
+        <attr name="unidade" format="string" />
+        <!-- Casas decimais dos valores do eixo. -->
+        <attr name="casasDecimais" format="integer" />
+    </declare-styleable>
+</resources>
