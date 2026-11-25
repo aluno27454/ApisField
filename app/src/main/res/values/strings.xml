@@ -73,6 +73,8 @@
         <item>OkHttp e logging-interceptor</item>
         <item>Kotlin Coroutines</item>
         <item>AndroidX Lifecycle (ViewModel)</item>
+        <item>Room</item>
+        <item>KSP (Kotlin Symbol Processing)</item>
     </string-array>
     <string-array name="sobre_bibliotecas_origens" translatable="false">
         <item>https://developer.android.com/jetpack/androidx</item>
@@ -83,6 +85,8 @@
         <item>https://square.github.io/okhttp/</item>
         <item>https://github.com/Kotlin/kotlinx.coroutines</item>
         <item>https://developer.android.com/jetpack/androidx/releases/lifecycle</item>
+        <item>https://developer.android.com/training/data-storage/room</item>
+        <item>https://github.com/google/ksp</item>
     </string-array>
 
     <!-- Erros da API (data/remote/ApiError.kt) -->
