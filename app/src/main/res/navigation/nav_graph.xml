@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
     Grafo de navegação do ecrã principal: um destino por separador da barra inferior.
-    Por agora todos usam o EmConstrucaoFragment; cada issue troca o seu pelo Fragment real.
+    Os que ainda não estão feitos usam o EmConstrucaoFragment; cada issue troca o seu pelo Fragment real.
 -->
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,7 +10,7 @@
 
     <fragment
         android:id="@+id/painel"
-        android:name="pt.uptomar.dam2026.apisfield.ui.common.EmConstrucaoFragment"
+        android:name="pt.uptomar.dam2026.apisfield.ui.painel.PainelFragment"
         android:label="@string/separador_painel" />
 
     <fragment

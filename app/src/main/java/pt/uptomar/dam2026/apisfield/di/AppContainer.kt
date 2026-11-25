@@ -7,6 +7,8 @@ import pt.uptomar.dam2026.apisfield.data.remote.ApiService
 import pt.uptomar.dam2026.apisfield.data.remote.createApiService
 import pt.uptomar.dam2026.apisfield.data.repository.AuthRepository
 import pt.uptomar.dam2026.apisfield.data.repository.AuthRepositoryImpl
+import pt.uptomar.dam2026.apisfield.data.repository.HiveRepository
+import pt.uptomar.dam2026.apisfield.data.repository.HiveRepositoryImpl
 
 /**
  * Contentor de dependências da app (injeção de dependências manual).
@@ -41,4 +43,6 @@ class AppContainer(private val appContext: Context) {
     }
 
     val authRepository: AuthRepository by lazy { AuthRepositoryImpl(api, sessao) }
+
+    val hiveRepository: HiveRepository by lazy { HiveRepositoryImpl(api) }
 }

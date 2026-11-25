@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Cartão de uma colmeia na lista do painel, com a faixa da esquerda na cor do estado. -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="6dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="@color/branco"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/borda"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/faixaEstado"
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="14dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/fundo_pilula"
+            tools:backgroundTint="@color/estado_saudavel" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvNome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:textAppearance="?attr/textAppearanceTitleMedium"
+                    android:textColor="@color/escuro"
+                    android:textStyle="bold"
+                    tools:text="Colmeia do Nabão" />
+
+                <TextView
+                    android:id="@+id/tvModelo"
+                    style="@style/Widget.ApisField.Chip"
+                    android:layout_marginStart="8dp"
+                    android:textStyle="bold"
+                    tools:text="PRO" />
+
+                <TextView
+                    android:id="@+id/tvEstado"
+                    style="@style/Widget.ApisField.Chip"
+                    android:layout_marginStart="6dp"
+                    android:drawablePadding="6dp"
+                    app:drawableStartCompat="@drawable/ponto_pequeno"
+                    tools:text="Saudável" />
+            </LinearLayout>
+
+            <!-- Passa para a linha seguinte os chips que não couberem. -->
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/grupoSensores"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:chipSpacingHorizontal="6dp"
+                app:chipSpacingVertical="6dp">
+
+                <TextView
+                    android:id="@+id/chipTemperatura"
+                    style="@style/Widget.ApisField.Chip" />
+
+                <TextView
+                    android:id="@+id/chipPeso"
+                    style="@style/Widget.ApisField.Chip" />
+
+                <TextView
+                    android:id="@+id/chipCo2"
+                    style="@style/Widget.ApisField.Chip" />
+
+                <TextView
+                    android:id="@+id/chipBateria"
+                    style="@style/Widget.ApisField.Chip" />
+
+                <TextView
+                    android:id="@+id/chipVespa"
+                    style="@style/Widget.ApisField.Chip"
+                    android:backgroundTint="@color/fundo_perigo"
+                    android:text="@string/colmeia_vespa"
+                    android:textColor="@color/estado_perigo"
+                    android:textStyle="bold" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Sem comunicação, as últimas leituras já não valem: mostra-se só isto. -->
+            <TextView
+                android:id="@+id/tvSemComunicacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/colmeia_sem_comunicacao"
+                android:textAppearance="?attr/textAppearanceBodyMedium"
+                android:textColor="@color/medio"
+                android:textStyle="italic"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvLocal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:drawablePadding="4dp"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:textColor="@color/medio"
+                app:drawableStartCompat="@drawable/ic_local"
+                tools:text="Margem do Nabão, Tomar" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
