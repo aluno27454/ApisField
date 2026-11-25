@@ -61,4 +61,19 @@ class HiveRepositoryTest {
         assertEquals(ApiResult.Falha(ApiError.NaoEncontrado), repositorio.colmeia(9))
         assertEquals("/api/hives/9", servidor.takeRequest().path)
     }
+
+    @Test
+    fun pedeOHistoricoEConverteOsZerosEmSemDados() = runTest {
+        servidor.enqueue(
+            MockResponse().setBody(
+                """{"temperature":[{"label":"Seg","date":"2026-11-23","value":34.5},
+                {"label":"Ter","date":"2026-11-24","value":0}],"weight":[],"co2":[]}"""
+            )
+        )
+
+        val historico = (repositorio.historico(9) as ApiResult.Sucesso).dados
+
+        assertEquals(listOf(34.5, null), historico.temperature.map { it.value })
+        assertEquals("/api/hives/9/history", servidor.takeRequest().path)
+    }
 }

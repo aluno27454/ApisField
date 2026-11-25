@@ -4,6 +4,7 @@ import pt.uptomar.dam2026.apisfield.data.remote.ApiError
 import pt.uptomar.dam2026.apisfield.data.remote.ApiResult
 import pt.uptomar.dam2026.apisfield.data.repository.HiveRepository
 import pt.uptomar.dam2026.apisfield.domain.model.Hive
+import pt.uptomar.dam2026.apisfield.domain.model.HiveHistory
 import pt.uptomar.dam2026.apisfield.domain.model.HiveLocation
 import pt.uptomar.dam2026.apisfield.domain.model.HiveModel
 import pt.uptomar.dam2026.apisfield.domain.model.HiveSensors
@@ -14,6 +15,7 @@ import java.time.Instant
 class ColmeiasFalsas(
     var lista: ApiResult<List<Hive>> = ApiResult.Sucesso(emptyList()),
     var colmeia: ApiResult<Hive> = ApiResult.Falha(ApiError.NaoEncontrado),
+    var historico: ApiResult<HiveHistory> = ApiResult.Falha(ApiError.NaoEncontrado),
 ) : HiveRepository {
     /** Quantas vezes se pediu a lista. */
     var chamadas = 0
@@ -30,6 +32,8 @@ class ColmeiasFalsas(
         idsPedidos += id
         return colmeia
     }
+
+    override suspend fun historico(id: Int): ApiResult<HiveHistory> = historico
 }
 
 /** Colmeia com valores normais, para os testes só indicarem o que lhes interessa. */

@@ -18,8 +18,11 @@ import pt.uptomar.dam2026.apisfield.R
 import pt.uptomar.dam2026.apisfield.colmeia
 import pt.uptomar.dam2026.apisfield.data.remote.ApiError
 import pt.uptomar.dam2026.apisfield.data.remote.ApiResult
+import pt.uptomar.dam2026.apisfield.domain.model.HiveHistory
 import pt.uptomar.dam2026.apisfield.domain.model.HiveStatus
+import pt.uptomar.dam2026.apisfield.domain.model.SensorReading
 import pt.uptomar.dam2026.apisfield.ui.common.UiState
+import java.time.LocalDate
 
 /** Testes do [HiveDetailViewModel] com um repositório falso, sem rede. */
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -80,5 +83,59 @@ class HiveDetailViewModelTest {
         advanceUntilIdle()
 
         assertEquals(HiveStatus.DANGER, (vm.estado.value.conteudo as UiState.Success).data.status)
+    }
+
+    // ---- Histórico ----
+
+    private fun serie(vararg valores: Double?) =
+        valores.mapIndexed { i, v -> SensorReading("D$i", LocalDate.of(2026, 11, 19).plusDays(i.toLong()), v) }
+
+    private val historico = HiveHistory(serie(34.0, null, 35.0), serie(40.0, 41.0, 41.5), emptyList())
+
+    @Test
+    fun carregaOHistorico() = runTest(dispatcher) {
+        val vm = HiveDetailViewModel(
+            7, ColmeiasFalsas(colmeia = ApiResult.Sucesso(colmeia(7)), historico = ApiResult.Sucesso(historico)),
+        )
+        assertEquals(UiState.Loading, vm.historico.value)
+
+        advanceUntilIdle()
+
+        assertEquals(UiState.Success(historico), vm.historico.value)
+    }
+
+    @Test
+    fun umHistoricoSemValoresFicaVazio() = runTest(dispatcher) {
+        val vazio = HiveHistory(serie(null, null), serie(null, null), emptyList())
+        val vm = HiveDetailViewModel(
+            7, ColmeiasFalsas(colmeia = ApiResult.Sucesso(colmeia(7)), historico = ApiResult.Sucesso(vazio)),
+        )
+        advanceUntilIdle()
+
+        assertEquals(UiState.Empty, vm.historico.value)
+    }
+
+    @Test
+    fun seSoOHistoricoFalharAsLeiturasAparecemNaMesma() = runTest(dispatcher) {
+        val vm = HiveDetailViewModel(
+            7, ColmeiasFalsas(colmeia = ApiResult.Sucesso(colmeia(7)), historico = ApiResult.Falha(ApiError.Servidor(500))),
+        )
+        advanceUntilIdle()
+
+        assertEquals(UiState.Success(colmeia(7)), vm.estado.value.conteudo)
+        assertEquals(UiState.Error(R.string.erro_servidor), vm.historico.value)
+    }
+
+    @Test
+    fun seAAtualizacaoDoHistoricoFalharMantemOGraficoAnterior() = runTest(dispatcher) {
+        val colmeias = ColmeiasFalsas(colmeia = ApiResult.Sucesso(colmeia(7)), historico = ApiResult.Sucesso(historico))
+        val vm = HiveDetailViewModel(7, colmeias)
+        advanceUntilIdle()
+
+        colmeias.historico = ApiResult.Falha(ApiError.SemLigacao)
+        vm.atualizar()
+        advanceUntilIdle()
+
+        assertEquals(UiState.Success(historico), vm.historico.value)
     }
 }
