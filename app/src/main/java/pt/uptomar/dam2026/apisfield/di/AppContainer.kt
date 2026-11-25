@@ -3,8 +3,11 @@ package pt.uptomar.dam2026.apisfield.di
 import android.content.Context
 import pt.uptomar.dam2026.apisfield.BuildConfig
 import pt.uptomar.dam2026.apisfield.data.local.AppDatabase
+import pt.uptomar.dam2026.apisfield.data.local.SessionStore
 import pt.uptomar.dam2026.apisfield.data.remote.ApiService
 import pt.uptomar.dam2026.apisfield.data.remote.createApiService
+import pt.uptomar.dam2026.apisfield.data.repository.AuthRepository
+import pt.uptomar.dam2026.apisfield.data.repository.AuthRepositoryImpl
 
 /**
  * Contentor de dependências da app (injeção de dependências manual).
@@ -15,25 +18,30 @@ import pt.uptomar.dam2026.apisfield.data.remote.createApiService
  *
  * Referência: https://developer.android.com/training/dependency-injection/manual
  *
- * As próximas funcionalidades acrescentam aqui a sessão do utilizador e os repositórios.
+ * As próximas funcionalidades acrescentam aqui os outros repositórios.
  *
  * @param appContext contexto da aplicação (nunca o de uma Activity, para não a manter em memória).
  */
 class AppContainer(private val appContext: Context) {
 
+    /** Sessão do utilizador (token e dados), guardada no dispositivo. */
+    val sessao: SessionStore by lazy { SessionStore(appContext) }
+
     /**
      * Cliente da API. O endereço depende do tipo de build (ver app/build.gradle.kts) e os
-     * pedidos só são escritos no Logcat em debug.
-     *
-     * O token ainda é sempre null: a sessão (SessionStore) é criada na issue #5.
+     * pedidos só são escritos no Logcat em debug. Cada pedido leva o token da [sessao]; se a API
+     * responder 401, a sessão termina e a MainActivity volta ao login.
      */
     val api: ApiService by lazy {
         createApiService(
             baseUrl = BuildConfig.API_BASE_URL,
-            tokenProvider = { null },
+            tokenProvider = { sessao.token },
             registarPedidos = BuildConfig.DEBUG,
+            aoSessaoExpirar = { sessao.limpar() },
         )
     }
+
+    val authRepository: AuthRepository by lazy { AuthRepositoryImpl(api, sessao) }
 
     /**
      * Base de dados local (colmeias em cache, visitas e avistamentos por enviar).

@@ -9,11 +9,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.launch
 import pt.uptomar.dam2026.apisfield.databinding.ActivityMainBinding
+import pt.uptomar.dam2026.apisfield.ui.auth.LoginActivity
 import pt.uptomar.dam2026.apisfield.ui.sobre.SobreActivity
 
 /**
@@ -22,6 +28,9 @@ import pt.uptomar.dam2026.apisfield.ui.sobre.SobreActivity
  * Contém a barra superior (com o menu **Sobre** e **Terminar sessão**) e a barra de navegação
  * inferior com os quatro separadores: Painel, Visitas, Vespas e Alertas. O conteúdo de cada
  * separador é um Fragment, trocado pelo Navigation Component segundo `res/navigation/nav_graph.xml`.
+ *
+ * Enquanto está visível, observa a sessão: se ela terminar (pelo menu ou por um 401 da API),
+ * volta ao ecrã de login.
  */
 class MainActivity : AppCompatActivity() {
 
@@ -36,6 +45,39 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         configurarNavegacao()
+        voltarAoLoginSeASessaoTerminar()
+    }
+
+    private val container get() = (application as ApisFieldApp).container
+
+    /**
+     * Quando a sessão deixa de existir, abre o login e fecha este ecrã. Cobre o "Terminar sessão"
+     * e o 401 da API (token expirado), tratado no AuthInterceptor.
+     */
+    private fun voltarAoLoginSeASessaoTerminar() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                container.sessao.utilizador.collect { utilizador ->
+                    if (utilizador == null) {
+                        startActivity(
+                            Intent(this@MainActivity, LoginActivity::class.java)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        )
+                        finish()
+                    }
+                }
+            }
+        }
+    }
+
+    /** Pede confirmação antes de terminar a sessão, para um toque acidental não obrigar a novo login. */
+    private fun confirmarTerminarSessao() {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.terminar_sessao_titulo)
+            .setMessage(R.string.terminar_sessao_mensagem)
+            .setNegativeButton(R.string.cancelar, null)
+            .setPositiveButton(R.string.terminar_sessao_confirmar) { _, _ -> container.authRepository.terminarSessao() }
+            .show()
     }
 
     /**
@@ -78,8 +120,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, SobreActivity::class.java))
             true
         }
-        // A ação de terminar sessão é implementada na issue #5.
-        R.id.acaoTerminarSessao -> true
+        R.id.acaoTerminarSessao -> {
+            confirmarTerminarSessao()
+            true
+        }
         else -> super.onOptionsItemSelected(item)
     }
 }

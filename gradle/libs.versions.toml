@@ -15,6 +15,7 @@ retrofit = "3.0.0"
 # O OkHttp fica na versão de que o Retrofit 3.0.0 depende; a 5.x muda a API do MockWebServer.
 okhttp = "4.12.0"
 coroutines = "1.11.0"
+lifecycle = "2.11.1"
 # Room 2.x: a linha estável usada pela documentação oficial (a 3.x muda de pacote e obriga a um SQLiteDriver).
 room = "2.8.5"
 ksp = "2.3.14"
@@ -37,6 +38,9 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+# ViewModel e coroutines ligadas ao ciclo de vida (o estado sobrevive a rotações)
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 # Coroutines: rede e base de dados fora da thread principal
 kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 # Base de dados local: Room (runtime, extensões para coroutines e gerador de código usado pelo KSP)

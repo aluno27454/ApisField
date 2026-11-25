@@ -11,6 +11,33 @@
     <string name="menu_sobre">Sobre</string>
     <string name="menu_terminar_sessao">Terminar sessão</string>
 
+    <!-- Login e registo -->
+    <string name="login_subtitulo">Acompanha as tuas colmeias no campo.</string>
+    <string name="campo_email">Email</string>
+    <string name="campo_password">Palavra-passe</string>
+    <string name="campo_nome">Nome</string>
+    <string name="campo_confirmacao">Confirmar palavra-passe</string>
+    <string name="login_entrar">Entrar</string>
+    <string name="login_sem_conta">Ainda não tens conta?</string>
+    <string name="login_criar_conta">Criar conta</string>
+    <string name="login_erro_credenciais">Email ou palavra-passe errados.</string>
+    <string name="registo_titulo">Criar conta</string>
+    <string name="registo_criar">Criar conta</string>
+    <string name="registo_erro_email_em_uso">Este email já tem conta. Inicia sessão.</string>
+    <string name="registo_ajuda_password">Pelo menos 8 caracteres, com letras e números.</string>
+    <string name="campo_obrigatorio">Preenche este campo.</string>
+    <string name="campo_email_invalido">Escreve um email válido.</string>
+    <string name="campo_password_fraca">Pelo menos 8 caracteres, com letras e números.</string>
+    <string name="campo_nome_tamanho">O nome tem de ter entre 2 e 60 caracteres.</string>
+    <string name="campo_confirmacao_diferente">As palavras-passe não são iguais.</string>
+    <string name="a_enviar">A enviar…</string>
+
+    <!-- Terminar sessão -->
+    <string name="terminar_sessao_titulo">Terminar sessão?</string>
+    <string name="terminar_sessao_mensagem">Vais ter de voltar a iniciar sessão para ver as tuas colmeias.</string>
+    <string name="terminar_sessao_confirmar">Terminar</string>
+    <string name="cancelar">Cancelar</string>
+
     <!-- Ecrã Sobre -->
     <string name="sobre_titulo">Sobre</string>
     <string name="sobre_versao">Versão %1$s</string>
@@ -45,6 +72,7 @@
         <item>Retrofit e Gson converter</item>
         <item>OkHttp e logging-interceptor</item>
         <item>Kotlin Coroutines</item>
+        <item>AndroidX Lifecycle (ViewModel)</item>
         <item>Room</item>
         <item>KSP (Kotlin Symbol Processing)</item>
     </string-array>
@@ -56,6 +84,7 @@
         <item>https://square.github.io/retrofit/</item>
         <item>https://square.github.io/okhttp/</item>
         <item>https://github.com/Kotlin/kotlinx.coroutines</item>
+        <item>https://developer.android.com/jetpack/androidx/releases/lifecycle</item>
         <item>https://developer.android.com/training/data-storage/room</item>
         <item>https://github.com/google/ksp</item>
     </string-array>
