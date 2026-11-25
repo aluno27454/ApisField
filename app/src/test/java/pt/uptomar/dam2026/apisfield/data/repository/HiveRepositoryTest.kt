@@ -53,4 +53,12 @@ class HiveRepositoryTest {
 
         assertEquals(ApiResult.Falha(ApiError.Servidor(500)), repositorio.colmeias())
     }
+
+    @Test
+    fun pedeUmaColmeiaPeloId() = runTest {
+        servidor.enqueue(MockResponse().setResponseCode(404))
+
+        assertEquals(ApiResult.Falha(ApiError.NaoEncontrado), repositorio.colmeia(9))
+        assertEquals("/api/hives/9", servidor.takeRequest().path)
+    }
 }

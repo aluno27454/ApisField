@@ -14,28 +14,18 @@ import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
+import pt.uptomar.dam2026.apisfield.ColmeiasFalsas
 import pt.uptomar.dam2026.apisfield.R
 import pt.uptomar.dam2026.apisfield.colmeia
 import pt.uptomar.dam2026.apisfield.data.remote.ApiError
 import pt.uptomar.dam2026.apisfield.data.remote.ApiResult
-import pt.uptomar.dam2026.apisfield.data.repository.HiveRepository
 import pt.uptomar.dam2026.apisfield.domain.EstadoApiario
-import pt.uptomar.dam2026.apisfield.domain.model.Hive
 import pt.uptomar.dam2026.apisfield.domain.model.HiveStatus
 import pt.uptomar.dam2026.apisfield.ui.common.UiState
 
 /** Testes do [PainelViewModel] com um repositório falso, sem rede. */
 @OptIn(ExperimentalCoroutinesApi::class)
 class PainelViewModelTest {
-
-    /** Devolve o [resultado] escolhido pelo teste e conta as chamadas. */
-    private class ColmeiasFalsas(var resultado: ApiResult<List<Hive>>) : HiveRepository {
-        var chamadas = 0
-        override suspend fun colmeias(): ApiResult<List<Hive>> {
-            chamadas++
-            return resultado
-        }
-    }
 
     private val dispatcher = StandardTestDispatcher()
     private val lista = listOf(colmeia(1), colmeia(2, HiveStatus.DANGER))
@@ -82,7 +72,7 @@ class PainelViewModelTest {
         val vm = PainelViewModel(colmeias)
         advanceUntilIdle()
 
-        colmeias.resultado = ApiResult.Sucesso(lista)
+        colmeias.lista = ApiResult.Sucesso(lista)
         vm.atualizar()
         assertEquals(UiState.Loading, vm.estado.value.conteudo)
 
@@ -96,7 +86,7 @@ class PainelViewModelTest {
         val vm = PainelViewModel(colmeias)
         advanceUntilIdle()
 
-        colmeias.resultado = ApiResult.Sucesso(lista + colmeia(3))
+        colmeias.lista = ApiResult.Sucesso(lista + colmeia(3))
         vm.atualizar()
         assertTrue(vm.estado.value.aAtualizar)
         assertTrue(vm.estado.value.conteudo is UiState.Success)
@@ -112,7 +102,7 @@ class PainelViewModelTest {
         val vm = PainelViewModel(colmeias)
         advanceUntilIdle()
 
-        colmeias.resultado = ApiResult.Falha(ApiError.SemLigacao)
+        colmeias.lista = ApiResult.Falha(ApiError.SemLigacao)
         vm.atualizar()
         advanceUntilIdle()
 
