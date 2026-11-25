@@ -20,6 +20,10 @@ interface SightingDao {
     @Query("SELECT * FROM avistamentos WHERE syncState = :estado ORDER BY date")
     suspend fun porEstado(estado: SyncState): List<SightingEntity>
 
+    /** Número de avistamentos que ainda não chegaram à API (pendentes ou recusados), como na visita. */
+    @Query("SELECT COUNT(*) FROM avistamentos WHERE syncState != 'SINCRONIZADO'")
+    suspend fun contarPorEnviar(): Int
+
     /** Grava um avistamento novo e devolve o `localId` que lhe foi atribuído. */
     @Insert
     suspend fun inserir(avistamento: SightingEntity): Long

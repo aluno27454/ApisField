@@ -28,6 +28,13 @@ interface VisitDao {
     @Query("SELECT * FROM visitas WHERE syncState = :estado ORDER BY date")
     suspend fun porEstado(estado: SyncState): List<VisitWithPhotos>
 
+    /**
+     * Número de visitas que ainda não chegaram à API: as pendentes e as que a API recusou (ERRO).
+     * O Room guarda os enums pelo nome, por isso compara-se com o texto 'SINCRONIZADO'.
+     */
+    @Query("SELECT COUNT(*) FROM visitas WHERE syncState != 'SINCRONIZADO'")
+    suspend fun contarPorEnviar(): Int
+
     /** Grava uma visita nova e devolve o `localId` que lhe foi atribuído. */
     @Insert
     suspend fun inserir(visita: VisitEntity): Long

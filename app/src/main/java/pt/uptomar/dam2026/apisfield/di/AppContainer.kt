@@ -41,7 +41,7 @@ class AppContainer(private val appContext: Context) {
         )
     }
 
-    val authRepository: AuthRepository by lazy { AuthRepositoryImpl(api, sessao) }
+    val authRepository: AuthRepository by lazy { AuthRepositoryImpl(api, sessao, baseDados) }
 
     /**
      * Base de dados local (colmeias em cache, visitas e avistamentos por enviar).
