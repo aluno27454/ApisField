@@ -76,6 +76,7 @@ As regras da UC permitem bibliotecas, desde que sejam justificadas, que se saiba
 | Retrofit + Gson converter | [square.github.io/retrofit](https://square.github.io/retrofit/) | Cliente REST declarativo | `HttpURLConnection` + `org.json` |
 | OkHttp + logging-interceptor | [square.github.io/okhttp](https://square.github.io/okhttp/) | Token em todos os pedidos, logs em debug | `HttpURLConnection.setRequestProperty` |
 | Room | [developer.android.com/training/data-storage/room](https://developer.android.com/training/data-storage/room) | Base de dados local com verificação de SQL na compilação | `SQLiteOpenHelper` |
+| KSP (Kotlin Symbol Processing) | [github.com/google/ksp](https://github.com/google/ksp) | Gera, durante a compilação, o código do Room a partir das anotações; não entra no APK | Escrever à mão as consultas e as conversões que o Room gera |
 | WorkManager | [developer.android.com/topic/libraries/architecture/workmanager](https://developer.android.com/topic/libraries/architecture/workmanager) | Envio garantido das visitas pendentes | `ConnectivityManager.NetworkCallback` |
 | Coil | [coil-kt.github.io/coil](https://coil-kt.github.io/coil/) | Carregar e reduzir fotos | `BitmapFactory` com `inSampleSize` |
 | Play Services Location | [developers.google.com/android/guides/setup](https://developers.google.com/android/guides/setup) | Localização precisa com pouco gasto de bateria | `LocationManager` |

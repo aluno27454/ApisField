@@ -78,8 +78,24 @@ enum class BroodLevel(val apiValue: String) { FRACA("fraca"), MEDIA("media"), FO
 /** Comportamento das abelhas durante a visita. */
 enum class Temperament(val apiValue: String) { CALMA("calma"), NERVOSA("nervosa"), AGRESSIVA("agressiva") }
 
+/**
+ * Estado de sincronização de um registo feito na app (visita ou avistamento).
+ *
+ * No apiário pode não haver rede: o registo é gravado primeiro no telemóvel como [PENDENTE] e
+ * passa a [SINCRONIZADO] quando a API o aceita. [ERRO] indica que a API o recusou (ex.: dados
+ * inválidos) e que tentar enviar outra vez não resolve.
+ */
+enum class SyncState { SINCRONIZADO, PENDENTE, ERRO }
+
+/**
+ * Visita a uma colmeia.
+ *
+ * @property id id na API; é null enquanto a visita ainda não foi enviada.
+ * @property localId id na base de dados do telemóvel; é null nas visitas que vieram só da API.
+ * @property syncState se a visita já chegou à API.
+ */
 data class Visit(
-    val id: Int,
+    val id: Int?,
     val hiveId: Int,
     val hiveName: String,
     val date: Instant,
@@ -92,13 +108,23 @@ data class Visit(
     val longitude: Double?,
     val photoIds: List<Int>,
     val authorId: Int,
+    val localId: Long? = null,
+    val syncState: SyncState = SyncState.SINCRONIZADO,
 )
 
 /** Avistamento de uma vespa ou de um ninho. */
 enum class SightingType { WASP, NEST }
 
+/**
+ * Avistamento registado por um utilizador.
+ *
+ * @property id id na API; é null enquanto o avistamento ainda não foi enviado.
+ * @property distanceKm distância à posição do utilizador; só vem da API quando o pedido a inclui.
+ * @property localId id na base de dados do telemóvel; é null nos avistamentos que vieram só da API.
+ * @property syncState se o avistamento já chegou à API.
+ */
 data class WaspSighting(
-    val id: Int,
+    val id: Int?,
     val type: SightingType,
     val latitude: Double,
     val longitude: Double,
@@ -109,4 +135,6 @@ data class WaspSighting(
     val authorId: Int,
     val authorName: String,
     val distanceKm: Double?,
+    val localId: Long? = null,
+    val syncState: SyncState = SyncState.SINCRONIZADO,
 )

@@ -40,7 +40,8 @@ class LoginViewModelTest {
             return resultado
         }
         override suspend fun registar(nome: String, email: String, password: String) = resultado
-        override fun terminarSessao() = Unit
+        override suspend fun registosPorEnviar() = 0
+        override suspend fun terminarSessao() = Unit
     }
 
     private val dispatcher = StandardTestDispatcher()

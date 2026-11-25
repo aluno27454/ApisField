@@ -35,6 +35,10 @@
     <!-- Terminar sessão -->
     <string name="terminar_sessao_titulo">Terminar sessão?</string>
     <string name="terminar_sessao_mensagem">Vais ter de voltar a iniciar sessão para ver as tuas colmeias.</string>
+    <plurals name="terminar_sessao_aviso_por_enviar">
+        <item quantity="one">Tens %d registo por enviar (visita ou avistamento gravado sem rede). Se terminares a sessão, perde-se.</item>
+        <item quantity="other">Tens %d registos por enviar (visitas ou avistamentos gravados sem rede). Se terminares a sessão, perdem-se.</item>
+    </plurals>
     <string name="terminar_sessao_confirmar">Terminar</string>
     <string name="cancelar">Cancelar</string>
 
@@ -73,6 +77,8 @@
         <item>OkHttp e logging-interceptor</item>
         <item>Kotlin Coroutines</item>
         <item>AndroidX Lifecycle (ViewModel)</item>
+        <item>Room</item>
+        <item>KSP (Kotlin Symbol Processing)</item>
     </string-array>
     <string-array name="sobre_bibliotecas_origens" translatable="false">
         <item>https://developer.android.com/jetpack/androidx</item>
@@ -83,6 +89,8 @@
         <item>https://square.github.io/okhttp/</item>
         <item>https://github.com/Kotlin/kotlinx.coroutines</item>
         <item>https://developer.android.com/jetpack/androidx/releases/lifecycle</item>
+        <item>https://developer.android.com/training/data-storage/room</item>
+        <item>https://github.com/google/ksp</item>
     </string-array>
 
     <!-- Erros da API (data/remote/ApiError.kt) -->
