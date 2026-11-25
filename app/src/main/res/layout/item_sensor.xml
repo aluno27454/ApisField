@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Uma linha da lista de sensores: nome, valor e, se estiver fora do normal, o limite ultrapassado. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:minHeight="48dp"
+    android:orientation="horizontal"
+    android:paddingVertical="6dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:textColor="@color/escuro"
+            tools:text="Temperatura interior" />
+
+        <TextView
+            android:id="@+id/tvLimite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodySmall"
+            android:textColor="@color/estado_perigo"
+            android:visibility="gone"
+            tools:text="Acima do máximo de 37 °C"
+            tools:visibility="visible" />
+    </LinearLayout>
+
+    <!-- Algarismos todos com a mesma largura, para os valores ficarem alinhados. -->
+    <TextView
+        android:id="@+id/tvValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFeatureSettings="tnum"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:textColor="@color/escuro"
+        tools:text="34,8 °C" />
+
+</LinearLayout>

@@ -23,6 +23,8 @@ import pt.uptomar.dam2026.apisfield.ApisFieldApp
 import pt.uptomar.dam2026.apisfield.R
 import pt.uptomar.dam2026.apisfield.databinding.FragmentPainelBinding
 import pt.uptomar.dam2026.apisfield.domain.primeiroNome
+import pt.uptomar.dam2026.apisfield.ui.colmeia.HiveDetailActivity
+import pt.uptomar.dam2026.apisfield.ui.common.EcraUiState
 import pt.uptomar.dam2026.apisfield.ui.common.UiState
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
@@ -45,7 +47,9 @@ class PainelFragment : Fragment(), MenuProvider {
     }
 
     private val cabecalho = CabecalhoAdapter()
-    private val colmeias = ColmeiasAdapter()
+    private val colmeias = ColmeiasAdapter { colmeia ->
+        startActivity(HiveDetailActivity.intent(requireContext(), colmeia.id))
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentPainelBinding.inflate(inflater, container, false)
@@ -55,7 +59,7 @@ class PainelFragment : Fragment(), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lista.adapter = ConcatAdapter(cabecalho, colmeias)
-        binding.btnTentar.setOnClickListener { vm.atualizar() }
+        binding.mensagem.btnTentar.setOnClickListener { vm.atualizar() }
         // Com RESUMED, a ação desaparece da toolbar ao mudar de separador.
         requireActivity().addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
@@ -66,25 +70,25 @@ class PainelFragment : Fragment(), MenuProvider {
         }
     }
 
-    private fun mostrar(estado: PainelUiState) {
+    private fun mostrar(estado: EcraUiState<PainelDados>) {
         val conteudo = estado.conteudo
         binding.lista.isVisible = conteudo is UiState.Success
         binding.progresso.isVisible = conteudo is UiState.Loading
         binding.progressoAtualizar.isVisible = estado.aAtualizar && conteudo is UiState.Success
-        binding.grupoMensagem.isVisible = conteudo is UiState.Empty || conteudo is UiState.Error
+        binding.mensagem.root.isVisible = conteudo is UiState.Empty || conteudo is UiState.Error
 
         when (conteudo) {
             is UiState.Loading -> Unit
             is UiState.Success -> mostrarDados(conteudo.data)
             is UiState.Empty -> {
-                binding.tvMensagemTitulo.setText(R.string.painel_vazio_titulo)
-                binding.tvMensagemTexto.setText(R.string.painel_vazio_texto)
-                binding.btnTentar.isVisible = false
+                binding.mensagem.tvMensagemTitulo.setText(R.string.painel_vazio_titulo)
+                binding.mensagem.tvMensagemTexto.setText(R.string.painel_vazio_texto)
+                binding.mensagem.btnTentar.isVisible = false
             }
             is UiState.Error -> {
-                binding.tvMensagemTitulo.setText(R.string.painel_erro_titulo)
-                binding.tvMensagemTexto.setText(conteudo.message)
-                binding.btnTentar.isVisible = true
+                binding.mensagem.tvMensagemTitulo.setText(R.string.painel_erro_titulo)
+                binding.mensagem.tvMensagemTexto.setText(conteudo.message)
+                binding.mensagem.btnTentar.isVisible = true
             }
         }
 
@@ -103,7 +107,7 @@ class PainelFragment : Fragment(), MenuProvider {
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) =
-        menuInflater.inflate(R.menu.menu_painel, menu)
+        menuInflater.inflate(R.menu.menu_atualizar, menu)
 
     override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
         if (menuItem.itemId != R.id.acaoAtualizar) return false

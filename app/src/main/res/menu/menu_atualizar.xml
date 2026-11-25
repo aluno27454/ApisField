@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Ações do painel, acrescentadas à toolbar enquanto este separador está visível. -->
+<!-- Ação Atualizar, usada na toolbar do painel e do detalhe da colmeia. -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item

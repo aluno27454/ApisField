@@ -45,6 +45,11 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Detalhe de uma colmeia, aberto a partir do painel e dos alertas. -->
+        <activity
+            android:name=".ui.colmeia.HiveDetailActivity"
+            android:exported="false" />
+
         <!-- Ecrã Sobre, aberto pelo menu da MainActivity. Não é exportado: só a própria app o abre. -->
         <activity
             android:name=".ui.sobre.SobreActivity"

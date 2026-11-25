@@ -79,6 +79,29 @@
     <string name="colmeia_vespa">Vespa asiática</string>
     <string name="colmeia_sem_comunicacao">Sem comunicação</string>
 
+    <!-- Detalhe da colmeia -->
+    <string name="detalhe_erro_titulo">Não deu para abrir a colmeia</string>
+    <string name="detalhe_atualizado">Atualizado às %1$s</string>
+    <string name="detalhe_aviso_offline">Sem comunicação. As leituras podem estar desatualizadas.</string>
+    <string name="detalhe_aviso_vespa">Vespa asiática detetada à entrada da colmeia.</string>
+    <string name="detalhe_sensores">Sensores</string>
+    <string name="sensor_temp_interior">Temperatura interior</string>
+    <string name="sensor_temp_exterior">Temperatura exterior</string>
+    <string name="sensor_humidade">Humidade</string>
+    <string name="sensor_peso">Peso</string>
+    <string name="sensor_co2">CO₂</string>
+    <string name="sensor_bateria">Bateria</string>
+    <string name="sensor_sinal">Sinal</string>
+    <string name="valor_percentagem">%1$d%%</string>
+    <string name="valor_ppm">%1$.0f ppm</string>
+    <string name="limite_max_temperatura">Acima do máximo de %1$d °C</string>
+    <string name="limite_max_ppm">Acima do máximo de %1$d ppm</string>
+    <string name="limite_min_percentagem">Abaixo do mínimo de %1$d%%</string>
+    <string name="detalhe_registar_visita">Registar visita</string>
+    <string name="detalhe_ver_visitas">Ver visitas</string>
+    <string name="detalhe_abrir_mapa">Abrir no mapa</string>
+    <string name="detalhe_sem_mapa">Não há nenhuma app de mapas instalada.</string>
+
     <!-- Ecrã Sobre -->
     <string name="sobre_titulo">Sobre</string>
     <string name="sobre_versao">Versão %1$s</string>

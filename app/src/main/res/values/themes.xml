@@ -84,6 +84,17 @@
         <item name="android:autoSizeMaxTextSize">12sp</item>
     </style>
 
+    <!-- Faixa de aviso (colmeia offline ou vespa detetada). -->
+    <style name="Widget.ApisField.Aviso" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:background">@drawable/fundo_contagem</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:textAppearance">?attr/textAppearanceBodyMedium</item>
+        <item name="android:textColor">@color/escuro</item>
+    </style>
+
     <!-- Ecrã Sobre: estilos repetidos nas secções e nos dois autores. -->
     <style name="Widget.ApisField.Sobre.TituloSeccao" parent="">
         <item name="android:layout_width">match_parent</item>

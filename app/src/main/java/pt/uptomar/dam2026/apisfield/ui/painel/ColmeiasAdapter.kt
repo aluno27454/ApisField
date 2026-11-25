@@ -23,13 +23,20 @@ import pt.uptomar.dam2026.apisfield.ui.common.texto
  *
  * O [ListAdapter] compara a lista nova com a anterior (numa thread de fundo) e só redesenha os
  * cartões que mudaram.
+ *
+ * @param aoTocar chamada com a colmeia do cartão em que se tocou.
  */
-class ColmeiasAdapter : ListAdapter<Hive, ColmeiasAdapter.ColmeiaViewHolder>(Diferenca) {
+class ColmeiasAdapter(private val aoTocar: (Hive) -> Unit) :
+    ListAdapter<Hive, ColmeiasAdapter.ColmeiaViewHolder>(Diferenca) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ColmeiaViewHolder(ItemColmeiaBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
-    override fun onBindViewHolder(holder: ColmeiaViewHolder, position: Int) = holder.mostrar(getItem(position))
+    override fun onBindViewHolder(holder: ColmeiaViewHolder, position: Int) {
+        val colmeia = getItem(position)
+        holder.mostrar(colmeia)
+        holder.itemView.setOnClickListener { aoTocar(colmeia) }
+    }
 
     class ColmeiaViewHolder(private val binding: ItemColmeiaBinding) : RecyclerView.ViewHolder(binding.root) {
 

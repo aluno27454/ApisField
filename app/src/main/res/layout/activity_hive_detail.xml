@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Detalhe de uma colmeia: toolbar no topo e, por baixo, o conteúdo, o carregamento ou o erro. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/escuro"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.ApisField.Toolbar"
+        app:titleTextColor="@color/claro" />
+
+    <FrameLayout
+        android:id="@+id/corpo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- O id permite ao ScrollView repor sozinho a posição do scroll quando o ecrã roda. -->
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/branco"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/borda"
+                    app:strokeWidth="1dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <View
+                            android:id="@+id/faixaEstado"
+                            android:layout_width="48dp"
+                            android:layout_height="5dp"
+                            android:background="@drawable/fundo_pilula"
+                            tools:backgroundTint="@color/estado_saudavel" />
+
+                        <TextView
+                            android:id="@+id/tvNome"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:accessibilityHeading="true"
+                            android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                            android:textColor="@color/escuro"
+                            android:textStyle="bold"
+                            tools:text="Colmeia do Nabão" />
+
+                        <TextView
+                            android:id="@+id/tvLocal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:drawablePadding="4dp"
+                            android:textAppearance="?attr/textAppearanceBodyMedium"
+                            android:textColor="@color/medio"
+                            app:drawableStartCompat="@drawable/ic_local"
+                            tools:text="Margem do Nabão, Tomar" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvEstado"
+                                style="@style/Widget.ApisField.Chip"
+                                android:drawablePadding="6dp"
+                                app:drawableStartCompat="@drawable/ponto_pequeno"
+                                tools:text="Saudável" />
+
+                            <TextView
+                                android:id="@+id/tvModelo"
+                                style="@style/Widget.ApisField.Chip"
+                                android:layout_marginStart="6dp"
+                                android:textStyle="bold"
+                                tools:text="PRO" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvAtualizado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:textAppearance="?attr/textAppearanceBodySmall"
+                            android:textColor="@color/medio"
+                            tools:text="Atualizado às 10:05" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tvAvisoVespa"
+                    style="@style/Widget.ApisField.Aviso"
+                    android:backgroundTint="@color/fundo_perigo"
+                    android:text="@string/detalhe_aviso_vespa"
+                    android:textColor="@color/estado_perigo"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvAvisoOffline"
+                    style="@style/Widget.ApisField.Aviso"
+                    android:backgroundTint="@color/fundo_offline"
+                    android:text="@string/detalhe_aviso_offline"
+                    android:visibility="gone" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="@color/branco"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/borda"
+                    app:strokeWidth="1dp">
+
+                    <!-- As linhas repetem os ids de item_sensor, mas cada uma tem o seu binding. -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp"
+                        tools:ignore="DuplicateIncludedIds">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:accessibilityHeading="true"
+                            android:text="@string/detalhe_sensores"
+                            android:textAppearance="?attr/textAppearanceTitleMedium"
+                            android:textColor="@color/escuro"
+                            android:textStyle="bold" />
+
+                        <include
+                            android:id="@+id/sensorTempInterior"
+                            layout="@layout/item_sensor" />
+
+                        <include
+                            android:id="@+id/sensorTempExterior"
+                            layout="@layout/item_sensor" />
+
+                        <include
+                            android:id="@+id/sensorHumidade"
+                            layout="@layout/item_sensor" />
+
+                        <include
+                            android:id="@+id/sensorPeso"
+                            layout="@layout/item_sensor" />
+
+                        <include
+                            android:id="@+id/sensorCo2"
+                            layout="@layout/item_sensor" />
+
+                        <include
+                            android:id="@+id/sensorBateria"
+                            layout="@layout/item_sensor" />
+
+                        <include
+                            android:id="@+id/sensorSinal"
+                            layout="@layout/item_sensor" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRegistarVisita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/detalhe_registar_visita" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVerVisitas"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detalhe_ver_visitas"
+                    android:textColor="@color/escuro" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAbrirMapa"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detalhe_abrir_mapa"
+                    android:textColor="@color/escuro" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Aparece por cima das leituras enquanto se atualiza. -->
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressoAtualizar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/a_carregar"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progresso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/a_carregar"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/mensagem"
+            layout="@layout/vista_mensagem" />
+    </FrameLayout>
+
+</LinearLayout>
