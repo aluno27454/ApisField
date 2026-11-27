@@ -30,6 +30,14 @@ Trabalho prático de **Desenvolvimento de Aplicações Móveis**, Licenciatura e
 
 A versão de debug usa a API local em `http://10.0.2.2:5000` (o `localhost` do computador visto a partir do emulador). A versão de release usa a API alojada no Azure. O código da API está em [ApisField-API](https://github.com/aluno27454/ApisField-API).
 
+**Android 17 ou superior:** a versão de debug precisa da autorização de rede local para chegar à API no computador. Sem ela, o login fica à espera e mostra "Sem ligação", mesmo com a API a correr. Concede-se uma vez por dispositivo (e outra vez se a app for desinstalada), com o emulador ligado:
+
+```bash
+adb shell pm grant pt.uptomar.dam2026.apisfield android.permission.ACCESS_LOCAL_NETWORK
+```
+
+Em alternativa: **Definições → Apps → ApisField → Autorizações → Dispositivos próximos → Permitir**. A versão de release não precisa desta autorização, porque a API no Azure não está na rede local.
+
 ```bash
 ./gradlew assembleDebug   # compila o APK de debug
 ./gradlew test            # testes unitários
