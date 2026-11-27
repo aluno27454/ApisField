@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Só na build de debug: junta-se ao manifesto principal quando se compila em debug.
+
+    No Android 17 (API 37), uma app com targetSdk 37 só se pode ligar a endereços da rede local
+    se tiver a autorização ACCESS_LOCAL_NETWORK. Em debug a API está no computador de
+    desenvolvimento (10.0.2.2), que conta como rede local; sem esta autorização, o Android descarta
+    as ligações em silêncio e o login acaba em "Sem ligação".
+    Em release a API está no Azure (endereço público), por isso a versão publicada não a pede.
+
+    É uma autorização de execução: tem de ser concedida uma vez em cada dispositivo (ver README).
+    Referência: https://developer.android.com/privacy-and-security/local-network-permission
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.ACCESS_LOCAL_NETWORK" />
+
+</manifest>
